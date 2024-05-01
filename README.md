@@ -70,7 +70,7 @@ conda activate aiproject
 pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 3. Install all other dependencies
-````shell
+```shell
 pip install -r requirements.txt
 ```
 
@@ -80,87 +80,43 @@ Code of our AI-Project can be accessed [here](attacks/).
 ## Dataset
 <!-- We conducted experiments on two volumetric medical image segmentation datasets: [Synapse](https://www.synapse.org/#!Synapse:syn3193805/wiki/217789), [ACDC](https://www.creatis.insa-lyon.fr/Challenge/acdc/databases.html). Synapse contains 14 classes (including background) and ACDC contains 4 classes (including background). We follow the same dataset preprocessing as in [nnFormer](https://github.com/282857341/nnFormer).  -->
 
-The dataset folders for Synapse should be organized as follows: 
+The dataset folders for VisDrone and UAVDT should be organized as follows: 
 
-This folder includes: 
-- CholecT45 dataset:
-  - **data**: 45 cholecystectomy videos
-  - **triplet**: triplet annotations on 45 videos
-  - **instrument**: tool annotations on 45 videos
-  - **verb**: action annotations on 45 videos
-  - **target**: target annotations on 45 videos
-  - **dict**: id-to-name mapping files
-  - a LICENCE file
-  - a README file
+### VisDrone Dataset Structure
 
+The VisDrone dataset is structured to support various computer vision tasks such as object detection, tracking, and segmentation in aerial images. Here’s the typical organization:
 
-<details>
-  <summary>  
-  Expand this to visualize the dataset directory structure.
-  </summary>
+- **Annotations/:** Contains annotation files for each image, detailing object boundaries and class labels.
+  - `train_annotations/` - Annotation files for training images.
+  - `val_annotations/` - Annotation files for validation images.
+  - `test_annotations/` - Annotation files for test images.
+
+- **Images/:** This directory holds all the image files corresponding to the annotations.
+  - `train_images/` - Training image files.
+  - `val_images/` - Validation image files.
+  - `test_images/` - Test image files.
+
+- **README.txt:** Provides additional information about the dataset, including data collection methods, annotation details, and usage guidelines.
+
+### UAVDT Dataset Structure
+
+The UAVDT dataset, designed for UAV-based object detection and tracking, includes several features to facilitate advanced computer vision research:
   
-  ```
-    ──CholecT45
-        ├───data
-        │   ├───VID01
-        │   │   ├───000000.png
-        │   │   ├───000001.png
-        │   │   ├───000002.png
-        │   │   ├───
-        │   │   └───N.png
-        │   ├───VID02
-        │   │   ├───000000.png
-        │   │   ├───000001.png
-        │   │   ├───000002.png
-        │   │   ├───
-        │   │   └───N.png
-        │   ├───
-        │   ├───
-        │   ├───
-        │   |
-        │   └───VIDN
-        │       ├───000000.png
-        │       ├───000001.png
-        │       ├───000002.png
-        │       ├───
-        │       └───N.png
-        |
-        ├───triplet
-        │   ├───VID01.txt
-        │   ├───VID02.txt
-        │   ├───
-        │   └───VIDNN.txt
-        |
-        ├───instrument
-        │   ├───VID01.txt
-        │   ├───VID02.txt
-        │   ├───
-        │   └───VIDNN.txt
-        |
-        ├───verb
-        │   ├───VID01.txt
-        │   ├───VID02.txt
-        │   ├───
-        │   └───VIDNN.txt
-        |
-        ├───target
-        │   ├───VID01.txt
-        │   ├───VID02.txt
-        │   ├───
-        │   └───VIDNN.txt
-        |
-        ├───dict
-        │   ├───triplet.txt
-        │   ├───instrument.txt
-        │   ├───verb.txt
-        │   ├───target.txt
-        │   └───maps.txt
-        |
-        ├───LICENSE
-        └───README.md
-   ```
-</details>
+- **Annotations/:** This folder contains ground truth files that include details like bounding box coordinates and object classes.
+  - `train_annotations/` - Annotation files used for training models.
+  - `val_annotations/` - Annotation files used for validating model accuracy.
+  - `test_annotations/` - Annotation files used for testing models.
 
+- **Images/:** Contains the actual images used for object detection and tracking.
+  - `train_images/` - Images for training.
+  - `val_images/` - Images for validation.
+  - `test_images/` - Images for testing.
+
+- **Benchmark/:** Often includes benchmark scripts or pre-computed results to help compare the performance of different algorithms on the dataset.
+
+- **README.txt:** Detailed description of the dataset, including the setup, challenges, and instructions for use.
+
+Both datasets are rich in aerial imagery and are accompanied by comprehensive annotations that provide extensive data for training and evaluating object detection models. Each dataset comes with specific instructions in their respective README files, which should be read carefully to understand how to correctly use and cite the data. Include these details in your GitHub repo to guide users on how to navigate and utilize these datasets effectively.
 <br>
 
 
