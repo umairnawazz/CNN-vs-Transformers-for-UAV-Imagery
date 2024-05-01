@@ -1,5 +1,4 @@
 # CNN-vs-Transformers-for-UAV-Imagery
-A coursework project for AI702.
 
 > [**Fine-Grained Object Detection in Drone Imagery: A Comparative Study of Convolutional Neural Networks and Transformer-based Models**](https://mbzuaiac-my.sharepoint.com/:p:/g/personal/umair_nawaz_mbzuai_ac_ae/EWAz7BYnyqtKoSxYl2EDbDcBypvRgZR3NzelFHLQ-RfWSw?e=7lYAx0)<br>
 > [Umair Nawaz](https://scholar.google.com/citations?user=w7N4wSYAAAAJ&hl=en), 
@@ -129,6 +128,7 @@ The UAVDT dataset, designed for UAV-based object detection and tracking, include
 
 <br />
 The datasets can be downloaded using the following links:
+| ![main figure](/Media/Dataset-Sample.png)|
 
 | Dataset | Link |
 |:-- |:-- |
