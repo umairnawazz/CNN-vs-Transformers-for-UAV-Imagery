@@ -74,8 +74,6 @@ pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 -f https://download.pyt
 pip install -r requirements.txt
 ```
 
-## Adversarial Attacks
-Code of our AI-Project can be accessed [here](attacks/).
 
 ## Dataset
 <!-- We conducted experiments on two volumetric medical image segmentation datasets: [Synapse](https://www.synapse.org/#!Synapse:syn3193805/wiki/217789), [ACDC](https://www.creatis.insa-lyon.fr/Challenge/acdc/databases.html). Synapse contains 14 classes (including background) and ACDC contains 4 classes (including background). We follow the same dataset preprocessing as in [nnFormer](https://github.com/282857341/nnFormer).  -->
@@ -84,48 +82,59 @@ The dataset folders for VisDrone and UAVDT should be organized as follows:
 
 ### VisDrone Dataset Structure
 
-The VisDrone dataset is structured to support various computer vision tasks such as object detection, tracking, and segmentation in aerial images. Here’s the typical organization:
+The VisDrone dataset supports a variety of computer vision tasks such as object detection, tracking, and segmentation in aerial images. Below is the organization of the dataset:
 
-- **Annotations/:** Contains annotation files for each image, detailing object boundaries and class labels.
-  - `train_annotations/` - Annotation files for training images.
-  - `val_annotations/` - Annotation files for validation images.
-  - `test_annotations/` - Annotation files for test images.
+- **Annotations/:** This directory contains individual label files for each image, which detail the object boundaries and class labels for specific images.
+  - `train_annotations/` - Contains label files for training images.
+  - `val_annotations/` - Contains label files for validation images.
+  - `test_annotations/` - Contains label files for test images.
 
-- **Images/:** This directory holds all the image files corresponding to the annotations.
-  - `train_images/` - Training image files.
-  - `val_images/` - Validation image files.
-  - `test_images/` - Test image files.
+- **Images/:** Holds all the image files corresponding to the annotations.
+  - `train_images/` - Image files for training.
+  - `val_images/` - Image files for validation.
+  - `test_images/` - Image files for testing.
+
+- **Annotations.json:** A JSON file that includes comprehensive details of all annotations and corresponding images. This file serves as a consolidated dataset index, making it easier to navigate the dataset and integrate it with machine learning frameworks.
+  - `train_annotations.json` - A JSON file that details all annotations for the training images.
+  - `val_annotations.json` - A JSON file for validation image annotations.
+  - `test_annotations.json` - A JSON file for test image annotations.
 
 - **README.txt:** Provides additional information about the dataset, including data collection methods, annotation details, and usage guidelines.
 
 ### UAVDT Dataset Structure
 
-The UAVDT dataset, designed for UAV-based object detection and tracking, includes several features to facilitate advanced computer vision research:
-  
-- **Annotations/:** This folder contains ground truth files that include details like bounding box coordinates and object classes.
-  - `train_annotations/` - Annotation files used for training models.
-  - `val_annotations/` - Annotation files used for validating model accuracy.
-  - `test_annotations/` - Annotation files used for testing models.
+The UAVDT dataset, designed for UAV-based object detection and tracking, includes the following structure:
+
+- **Annotations/:** This folder contains individual label files for each image, providing specifics such as bounding box coordinates and object classes for the images.
+  - `train_annotations/` - Contains label files for training images.
+  - `val_annotations/` - Contains label files for validation images.
+  - `test_annotations/` - Contains label files for test images.
 
 - **Images/:** Contains the actual images used for object detection and tracking.
   - `train_images/` - Images for training.
   - `val_images/` - Images for validation.
   - `test_images/` - Images for testing.
 
-- **Benchmark/:** Often includes benchmark scripts or pre-computed results to help compare the performance of different algorithms on the dataset.
+- **Annotations.json:** Similar to the VisDrone setup, this JSON file encompasses all necessary details for annotations and image references, providing a comprehensive index of the dataset.
+  - `train_annotations.json` - Details all training set annotations.
+  - `val_annotations.json` - Details all validation set annotations.
+  - `test_annotations.json` - Details all test set annotations.
 
 - **README.txt:** Detailed description of the dataset, including the setup, challenges, and instructions for use.
 
-Both datasets are rich in aerial imagery and are accompanied by comprehensive annotations that provide extensive data for training and evaluating object detection models. Each dataset comes with specific instructions in their respective README files, which should be read carefully to understand how to correctly use and cite the data. Include these details in your GitHub repo to guide users on how to navigate and utilize these datasets effectively.
+
 <br>
 
 
 
 <br />
+The datasets can be downloaded using the following links:
 
 | Dataset | Link |
 |:-- |:-- |
-| CholecT45 | [Download](https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoibm0veTR2L3BjVTMvWkVaamZvR0V3SFNYL2NJYzgzS1crdnp5VGtXMW8rZE4vMjBlL0J1ZUNrSVRwWmdhQUpTQi9wQlY0L3E0c25Wb25kQ3U4S1dycUxKVUtrQStYZjRVS0Y2VmY4ZnVkNysvSFpZPSIsImgiOiJQYXNzd29yZCBzZW50IGJ5IGVtYWlsIHRvIGdyYW50IGFjY2VzcyB0byBDaG9sZWNUNDUgRGF0YXNldCIsInMiOiJIWHI5dm1aVlJFYVRGQlh3b0hHMWR3PT0iLCJpIjoiUitOb3Bmd2ZseFpOQWFvdCJ9)   Password: ct45_camma_@dwxr+p|
+| UAVDT | [Download](https://datasetninja.com/uavdt)|
+| VisDrone | [Download](https://github.com/VisDrone/VisDrone-Dataset)|
+
 
 <!-- You can use the command `tar -xzf btcv-synapse.tar.gz` to un-compress the file. -->
 
@@ -134,34 +143,8 @@ Both datasets are rich in aerial imagery and are accompanied by comprehensive an
 
 # Running the Model
 
-The code can be run in a trianing mode (`-t`) or testing mode (`-e`)  or both (`-t -e`) if you want to evaluate at the end of training :
+The training code is provided separately in a separate notebook. Please run each cell accordingly in the provided notebooks. Also, there is some cell to be executed for each dependencies to be installed so please do make sure that each cell is executed before proceeding to the training or testing cell. 
 
-<br />
-
-## Training on CholecT45 Dataset
-
-Simple training on CholecT45 dataset:
-
-```
-python run.py -t  --data_dir="/path/to/dataset" --dataset_variant=cholect45-crossval --version=1
-```
-
-You can include more details such as epoch, batch size, cross-validation and evaluation fold, weight initialization, learning rates for all subtasks, etc.:
-
-```
-python3 run.py -t -e  --data_dir="/path/to/dataset" --dataset_variant=cholect45-crossval --kfold=1 --epochs=180 --batch=64 --version=2 -l 1e-2 1e-3 1e-4 --pretrain_dir='path/to/imagenet/weights'
-```
-
-All the flags can been seen in the `run.py` file.
-The experimental setup of the published model is contained in the paper.
-
-<br />
-
-## Testing
-
-```
-python3 run.py -e --data_dir="/path/to/dataset" --dataset_variant=cholect45-crossval --kfold 1 --batch 32 --version=1 --test_ckpt="/path/to/model-k3/weights"
-```
 
 <br />
 
@@ -189,15 +172,6 @@ model = UNETR(
 We also used [UNETR++](https://arxiv.org/abs/2212.04497) in our experiments but its code is not in a presentable form. Therefore, we are not including support for UNETR++ model in this repository. 
 
 Clean and adversarially trained (under VAFA attack) [UNETR](https://openaccess.thecvf.com/content/WACV2022/papers/Hatamizadeh_UNETR_Transformers_for_3D_Medical_Image_Segmentation_WACV_2022_paper.pdf) models can be downloaded from the links given below. Place these models in a directory and give full path of the model (including name of the model e.g. `/folder_a/folder_b/model.pt`) in argument `--pretrained_path` to attack that model. -->
-
-| Dataset | Model | Link |
-|:-- |:-- |:-- | 
-|CholecT45 Cross-Val | Rendezvous $(\mathcal{M})$ | [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/umair_nawaz_mbzuai_ac_ae/EYfGsmktjUBKqBS5ZVzItEEBTBWcEBJGciQ388uwLL-oTw?e=lA7DKE)|
-
-
-
-## Launch Attacks on the Model
-After training the model, each attack can be launched on the model by initializing the hyper-parameters in each individual attack notebook located [here](attacks/).
 <!-- ```shell
 Run 
 ```
