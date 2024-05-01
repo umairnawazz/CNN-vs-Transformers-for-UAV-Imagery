@@ -128,7 +128,13 @@ The UAVDT dataset, designed for UAV-based object detection and tracking, include
 
 <br />
 The datasets can be downloaded using the following links:
+<hr />
+ 
 | ![main figure](/Media/Dataset-Sample.png)|
+
+<hr />
+
+
 
 | Dataset | Link |
 |:-- |:-- |
