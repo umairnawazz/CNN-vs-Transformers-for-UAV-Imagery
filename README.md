@@ -16,7 +16,7 @@ A coursework project for AI702.
 
 <hr />
  
-| ![main figure](/media/sample.gif)|
+| ![main figure](/Media/sample.gif)|
 |:--| 
 <!-- | **Overview of Adversarial Frequency Attack and Training**: A model trained on voxel-domain adversarial attacks is vulnerable to frequency-domain adversarial attacks. In our proposed adversarial training method, we generate adversarial samples by perturbing their frequency-domain representation using a novel module named "Frequency Perturbation". The model is then updated while minimizing the dice loss on clean and adversarially perturbed images. Furthermore, we propose a frequency consistency loss to improve the model performance. | -->
 
