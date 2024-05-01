@@ -76,7 +76,11 @@ pip install -r requirements.txt
 
 ## Dataset
 <!-- We conducted experiments on two volumetric medical image segmentation datasets: [Synapse](https://www.synapse.org/#!Synapse:syn3193805/wiki/217789), [ACDC](https://www.creatis.insa-lyon.fr/Challenge/acdc/databases.html). Synapse contains 14 classes (including background) and ACDC contains 4 classes (including background). We follow the same dataset preprocessing as in [nnFormer](https://github.com/282857341/nnFormer).  -->
+<hr />
+ 
+ ![main figure](/Media/Dataset-Sample.png)
 
+<hr />
 The dataset folders for VisDrone and UAVDT should be organized as follows: 
 
 ### VisDrone Dataset Structure
@@ -128,11 +132,7 @@ The UAVDT dataset, designed for UAV-based object detection and tracking, include
 
 <br />
 The datasets can be downloaded using the following links:
-<hr />
- 
-| ![main figure](/Media/Dataset-Sample.png)|
 
-<hr />
 
 
 
