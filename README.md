@@ -61,8 +61,7 @@ module load cuda-11.1
 2. Create conda environment
 ```shell
 conda create --name mmdetection python=3.8 -y
-
-conda activate aiproject
+conda activate mmdetection
 ```
 2. Install PyTorch
 ```shell
