@@ -6,7 +6,7 @@
 [Ufaq Khan](https://scholar.google.com/citations?user=E0p-7JEAAAAJ&hl=en&oi=ao)
 
 
-[![paper](https://img.shields.io/badge/Final-Report-<COLOR>.svg)](https://mbzuaiac-my.sharepoint.com/:b:/g/personal/umair_nawaz_mbzuai_ac_ae/EbSSy2q0ygFAv4TGgZ0G0ooBBNGLzps43YDh8naqc6wYxg?e=O0HQG1)
+[![paper](https://img.shields.io/badge/Final-Report-<COLOR>.svg)](https://mbzuaiac-my.sharepoint.com/:b:/g/personal/umair_nawaz_mbzuai_ac_ae/EY6xGek_jkpNulIn8PZ3qvYBc_zBvcOaELaBK8F6hotRGQ?e=uCgooh)
 <!-- [![video](https://img.shields.io/badge/Presentation-Video-F9D371)](https://github.com/asif-hanif/media/blob/main/miccai2023/VAFA_MICCAI2023_VIDEO.mp4)
 [![slides](https://img.shields.io/badge/Presentation-Slides-B762C1)](https://github.com/asif-hanif/media/blob/main/miccai2023/VAFA_MICCAI2023_SLIDES.pdf)
 [![poster](https://img.shields.io/badge/Presentation-Poster-blue)](https://github.com/asif-hanif/media/blob/main/miccai2023/VAFA_MICCAI2023_POSTER.pdf) -->
