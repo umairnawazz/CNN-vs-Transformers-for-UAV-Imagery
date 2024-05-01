@@ -24,75 +24,10 @@ A coursework project for AI702.
 > **Abstract:** <p style="text-align: justify;">*Advancements in drone technology have significantly enhanced the capabilities for aerial data acquisition, making the precise detection of small-scale objects a critical research area. Unlike conventional imaging techniques, drone imagery presents unique challenges due to the small size and high density of objects against varied backgrounds. This study systematically compares the performance of Convolutional Neural Networks (CNNs) and Transformer-based models in the context of fine-grained object detection in drone imagery. Our investigation employs a structured experimental methodology, utilizing the VisDrone and UAVDT datasets to assess the models across various performance metrics, including mean average precision (mAP) at multiple intersections over Union (IoU) thresholds. The comparative analysis aims to uncover each model type's relative strengths and weaknesses, focusing on their adaptability to the complexities of aerial image processing. The findings of this study are intended to inform the development of more effective object detection systems for UAVs, offering insights that are pivotal for optimizing neural network models tailored to the nuances of drone-based surveillance and analysis. This research enhances our understanding of model performance in drone imagery and sets the stage for future advancements in UAV imaging technology.* </p>
 <hr />
 
-## Problem Statement
 
-In the domain of laparoscopic surgery recognition, it is crucial to ensure the robustness of machine learning models for their reliable and safe deployment. This section addresses the evaluation of the susceptibility of the laparoscopic surgery recognition model, denoted as `M`, to adversarial attacks.
-
-> **Model Definition** <p style="text-align: justify;">*The model `M` is designed to map an input image `X` with `c` channels and spatial dimensions `h × w` to a set of predictions `Y`. The predictions `Y` encompass the components of surgical actions, including instruments, verbs, targets, and triplets of different sizes. Mathematically, the original model `M` is defined as:
-
-
-
-```math
-\begin{equation}
- M: \mathbf{X} \in \mathbb{R}^{c \times h \times w} \rightarrow \mathcal{Y} \quad
-
-\mathcal{Y} = \{I, V, T, IVT\} \quad \text{where} \quad
-\mathbf{I} \in \mathbb{R}^{6}, \quad 
-\mathbf{V} \in \mathbb{R}^{10}, \quad 
-\mathbf{T} \in \mathbb{R}^{15}, \quad 
-\mathbf{IVT} \in \mathbb{R}^{100}
-
-\end{equation}
-```
-
-> **Training** <p style="text-align: justify;">*The model is trained to minimize the Binary Cross-Entropy with Logit Loss ```math(`L_{BCE-Logit}`)``` on dataset `D`:
-
-```math
-\begin{equation}
-minimize L_{BCE-Logit}(M_{θ}(X), Y)
-\end{equation}
-```
-
-where `θ` denotes the parameters of the model `M`, and `M_{θ}(X)` denotes the predictions for input `X`.
-
-```math
-\begin{equation}
-L_{BCE}(M_{θ}(X), Y) = L_{BCE-I} + L_{BCE-V} + L_{BCE-T} + L_{BCE-IVT}
-\end{equation}
-```
-
-
-
-> **Adversarial Attacks** <p style="text-align: justify;">*After training, adversarial attacks, including PGD, BIM, and FGSM, are introduced to perturb the input image `X` to `X'`. The objective is to maximize the `L_{BCE-Logit}` while adhering to the perturbation constraint:
-
-```math
-\begin{equation}
-maximize L_{BCE-Logit}(M_{θ}(X'), Y)
-\end{equation}
-```
-
-subject to the perturbation constraint:
-
-```math
-\begin{equation}
-‖X' - X‖_{∞} ≤ ε
-\end{equation}
-```
-where the goal is to achieve:
-
-```math
-\begin{equation}
-Y ≠ M_{θ}(X')
-\end{equation}
-```
-</p>
-
-> **Perturbation Constraint** <p style="text-align: justify;">*The perturbation constraint, denoted as `‖X' - X‖_{∞} ≤ ε`, specifies the limit on the magnitude of perturbations introduced by adversarial attacks. This is generally referred to as the `L_p` norm, where in our case, it is the `L_{∞}` norm, also known as the infinity norm. The constraint `≤ ε` ensures that the maximum absolute difference between corresponding elements of the original and perturbed images is limited to a specified threshold of ±ε, indicating the maximum allowable perturbation. The problem aims to comprehensively investigate how adversarial attacks manipulate the input to induce significant deviations in the model's predictions from the original, thereby uncovering vulnerabilities and guiding strategies for enhancing the model's robustness.
-</br>
-<hr />
 
 ## Updates :rocket:
-- **Nov 25, 2023** : Submitted final report of AI Project. 
+- **May 01, 2024** : Submitted final report of AI Project. 
 <!-- - **July 10, 2023** : Released code for attacking [UNETR](https://openaccess.thecvf.com/content/WACV2022/papers/Hatamizadeh_UNETR_Transformers_for_3D_Medical_Image_Segmentation_WACV_2022_paper.pdf) model with support for [Synapse](https://www.synapse.org/#!Synapse:syn3193805/wiki/217789) dataset.
 - **May 25, 2023** : Early acceptance in [MICCAI 2023](https://conferences.miccai.org/2023/en/) (top 14%) &nbsp;&nbsp; :confetti_ball: -->
 
@@ -104,7 +39,7 @@ Y ≠ M_{θ}(X')
 The model depends on the following libraries:
 1. sklearn
 2. PIL
-3. Python >= 3.5
+3. Python >= 3.8
 4. ivtmetrics
 5. Developer's framework:
     1. For Tensorflow version 1:
@@ -112,17 +47,30 @@ The model depends on the following libraries:
     2. For Tensorflow version 2:
         * TF >= 2.1
     3. For PyTorch version:
-        - Pyorch >= 1.10.1
-        - TorchVision >= 0.11
+        - Pyorch >= 1.9.0
+        - cuda == 11.1
+        - TorchVision >= 0.10
+    4. For MMDetection:
+        - mmcv >= 2.0.0
 
 Steps to install dependencies
-1. Create conda environment
+1. Load necessary modules
 ```shell
-conda create --name aiproject python=3.8
+module load gcc-7
+module load cuda-11.1
+```
+2. Create conda environment
+```shell
+conda create --name mmdetection python=3.8 -y
+
 conda activate aiproject
 ```
-2. Install PyTorch and other dependencies
+2. Install PyTorch
 ```shell
+pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+```
+3. Install all other dependencies
+````shell
 pip install -r requirements.txt
 ```
 
